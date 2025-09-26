@@ -24,6 +24,6 @@ A Power BI dashboard built to analyze delivery performance across cities, person
 - Excel (manual inspection)
 - SQL (schema normalization)
 
----
-
-Built with delivery-backed logic and recruiter-grade clarity.
+## 📂 Dataset Source
+[Amazon Business Research Analyst Dataset – Kaggle](https://www.kaggle.com/datasets/vikramxd/amazon-business-research-analyst-dataset?select=updated.csv)  
+By Vikramjeet Singh, Gavesh Jain – Cleaned Dataset for the Amazon Business Research Analyst Hiring Challenge
