@@ -1,0 +1,58 @@
+Project 2 - Amazon Delivery Performance & Data Integrity Dashboard - DAX codes
+
+1.
+average age = ROUND(AVERAGE('working data ori'[Delivery_person_Age]),0)
+
+2.
+Average Delivery time = AVERAGE('working data ori'[Time_taken(min)])
+
+3.
+average rating = AVERAGE('working data ori'[Delivery_person_Ratings])
+
+4.
+avg_delivery_time_by_city = CALCULATE(
+    AVERAGE('working data ori'[Time_taken(min)]),
+    ALLEXCEPT('working data ori','working data ori'[City])
+)
+
+5.
+avg_delivery_time_by_traffic = CALCULATE(
+    AVERAGE('working data ori'[Time_taken(min)]),
+    ALLEXCEPT('working data ori','working data ori'[Road_traffic_density])
+)
+
+6.
+avg_delivery_time_by_weather = CALCULATE(
+    AVERAGE('working data ori'[Time_taken(min)]),
+    ALLEXCEPT('working data ori','working data ori'[Weatherconditions])
+)
+
+7.
+AvgFestivalTime = 
+CALCULATE (
+    AVERAGE ( 'working data ori'[Time_taken(min)] ),
+    'working data ori'[festival]
+)
+
+8.
+fastest delivery = MIN('working data ori'[Time_taken(min)])
+
+9.
+longest delivery = MAX('working data ori'[Time_taken(min)])
+
+10.
+max multi delivery = MAX('working data ori'[multiple_deliveries])
+
+11.
+multi_delivery_impact = CALCULATE(
+    AVERAGE('working data ori'[Time_taken(min)]),
+    ALLEXCEPT('working data ori','working data ori'[multiple_deliveries])
+)
+
+12.
+vehicle_condition_impact = CALCULATE(
+    AVERAGE('working data ori'[Time_taken(min)]),
+    ALLEXCEPT('working data ori','working data ori'[Vehicle_condition])
+)
+
+

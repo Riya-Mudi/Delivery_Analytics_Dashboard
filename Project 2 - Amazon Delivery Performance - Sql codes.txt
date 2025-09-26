@@ -1,0 +1,125 @@
+Project 2 - Amazon Delivery Performance & Data Integrity Dashboard - Sql codes
+
+1.
+create a database
+create database amazon_analysis
+
+2.
+tell sql which database to use
+USE amazon_analysis
+
+3. 
+create a table within the database
+CREATE TABLE amazon_data (
+  id VARCHAR(20),
+  delivery_person_id VARCHAR(20),
+  delivery_person_age INT,
+  delivery_person_ratings VARCHAR(10),
+  restro_lat DECIMAL(10,6),
+  restro_long DECIMAL(10,6),
+  delivery_loc_lat DECIMAL(10,6),
+  delivery_loc_long DECIMAL(10,6),
+  time_ordered TIME,
+  time_order_picked TIME,
+  weather_conditions VARCHAR(20),
+  road_traffic_density VARCHAR(20),
+  vehicle_conditions INT,
+  type_of_order VARCHAR(20),
+  type_of_vehicle VARCHAR(20),
+  multiple_deliveries VARCHAR(20),
+  festival VARCHAR(10),
+  city VARCHAR(20),
+  time_taken INT
+)
+
+4. 
+average delivery time taken
+select avg(time_taken)
+from amazon_data
+
+5. 
+maximum delivery time
+select max(time_taken)
+from amazon_data
+
+6. 
+minimum delivery time
+select min(time_taken)
+from amazon_data
+
+7. 
+average delivery time by city
+select city, avg(time_taken)
+from amazon_data
+group by city
+
+8.
+average delivery time by traffic density
+select road_traffic_density, avg(time_taken)
+from amazon_data
+group by road_traffic_density
+
+9. 
+average delivery time by weather
+select weather_conditions, avg(time_taken)
+from amazon_data
+group by weather_conditions
+
+10.
+average rating of delivery person
+select avg(delivery_person_ratings) as ratings
+from amazon_data
+
+11.
+average age of delivery person
+select avg(delivery_person_age)
+from amazon_data
+
+12.
+maximum multi deliveries
+select max(multiple_deliveries)
+from amazon_data
+
+13. 
+multi delivery impact
+SELECT multiple_deliveries, AVG(time_taken) AS avg_delivery_time
+FROM amazon_data
+GROUP BY multiple_deliveries
+ORDER BY multiple_deliveries
+
+14. 
+SELECT vehicle_conditions, AVG(time_taken) AS avg_delivery_time
+FROM amazon_data
+GROUP BY vehicle_conditions
+ORDER BY vehicle_conditions
+
+
+15.
+SELECT type_of_order, coun(*) as order_count
+FROM amazon_data
+group by type_of_order
+order by type_of_order asc
+
+16.
+SELECT vehicle_conditions, count(*) as order_count
+FROM amazon_data
+group by vehicle_conditions
+order by vehicle_conditions asc
+
+17.
+festival vs. non festival delivery time
+SELECT festival, count(*) as order_count
+FROM amazon_data
+group by festival
+order by festival asc
+
+18. 
+restaurant performance (top 5)
+SELECT restro_lat, restro_long, AVG(time_taken) AS avg_delivery_time
+FROM amazon_data
+GROUP BY restro_lat, restro_long
+ORDER BY avg_delivery_time DESC
+LIMIT 5
+
+
+
